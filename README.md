@@ -14,3 +14,6 @@ hacia otra dirección y que siga recorriendo el mapa, limpiando más superficie.
 <p>
 En esta practica no podemos hacer uso del Bumper, ni tampoco podemos ponerle, cuando el robot se choca, como un contador de espera ya que este último sería un error importante.  
 </p>
+
+
+

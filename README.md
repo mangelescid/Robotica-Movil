@@ -26,7 +26,7 @@ El robot primero se mueve en una dirección lineal, mientras los 180 grados del 
 Partes positivas que podría destacar es que por ejemplo el robot, utilizando este movimiento, lleva recorrido más o menos 40% y solo lleva 14 minutos del Real Time.
 </p>
 <p>
-El único problema que veo que tiene a lo mejor el movimiento, el cual creo que está relacionado con el tema del mapa, es que hay una sala en la que la primera vez sale bien pero la segunda vez que entra le cuesta más, entonces se retrasa.
+El único problema que veo que tiene a lo mejor el movimiento, es que es demasiado aleatorio según el ángulo que pille en ese momento,es decir, que dependiendo de la variable ángulo que tenga hará un tipo de rotación o hará otra, entonces hay veces en las que pueda recorrer más y en otras ocasiones menos.
 </p>
 
 

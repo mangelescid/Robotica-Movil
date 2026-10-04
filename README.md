@@ -33,7 +33,7 @@ El único problema que veo que tiene a lo mejor el movimiento, es que es demasia
 <img width="1119" height="931" alt="Screenshot from 2026-10-03 16-53-32" src="https://github.com/user-attachments/assets/2d42372d-9832-4a58-9d43-0554ae8c870b" />
 
 
-**Explicación del codigo**
+**Explicación resumida del codigo**
 <p>
 Antes de empezar, pude solucionar lo del problema con los láseres, poniendo un if para comprobarlo con respecto al tamaño del array.
 
@@ -46,6 +46,13 @@ Lo que he creado es una máquina de estado que solo consta de dos partes:
   -Movimiento con obstáculo
 
 El primer movimiento, se basa en un movimiento como he mencionado anteriormente lineal, en el que el robot lleva una velocidad de 0.3. Luego láseres se van comprobando todos los que tiene del 0-180, hasta que uno de ellos de con una distancia que sea 0.3, entonces en ese caso pasamos al movimiento dos, que consiste en que el robot retrocede y segun el angulo, si es par o impar tiene un giro positivo o un giro negativo, y este retroceso tiene un tiempo de duración que se basa en una diferencia de tiempos
+</p>
+
+**Pequeña demostración del movimiento del robot**
+
+[Screencast from 2026-10-04 17-42-40.webm](https://github.com/user-attachments/assets/b4111d1c-a5d5-462f-975b-f6d8007b1bb5)
+<p>
+Nota sobre el video: parece que el video va con un poco de delay, pero en el ordenador el movimiento del robot se ve más limpio.
 </p>
 
 

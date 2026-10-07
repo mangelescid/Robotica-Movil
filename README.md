@@ -74,3 +74,13 @@ Otro problema que me he encontrado, que creo que ya es del servidor, es que el m
 </p>
 
 
+## Práctica 2
+
+**Objetivo de la práctica**
+<p>
+En esta práctica tenemos un coche de fórmula 1, el cual tiene que recorrer un circuito, siguiendo una línea.
+
+En esta práctica aprenderemos a utilizar la cámara, también usaremos ejecuciones basadas en eventos y haremos uso de los cálculos de error (P, PD, PID).
+</p>
+
+

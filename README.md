@@ -83,4 +83,45 @@ En esta práctica tenemos un coche de fórmula 1, el cual tiene que recorrer un 
 En esta práctica aprenderemos a utilizar la cámara, también usaremos ejecuciones basadas en eventos y haremos uso de los cálculos de error (P, PD, PID).
 </p>
 
+**Explicación de la detección del color**
+<p>
+Para que el coche se pueda mover por el circuito, este tiene que seguir una línea roja que hay en el centro de la pista, entonces lo primero que tenemos que hacer es que el coche solamente detecte la línea a través de su color para poder seguirla y también para poder medir la distancia que tiene de ella.
 
+Entonces he creado un filtro de color, que se basa en las dos tonalidades de rojo, ya que en la gama de colores el rojo es el primero y el último entonces he cogido los dos para evitar algun problema, creando una mascara en la que se aplican las dos tonalidades sobre la imagen.
+
+Y tras aplicar la máscara en la imagen el resultado que obtenemos del mapa es el de la imagen superior: 
+
+
+<img width="1082" height="929" alt="Screenshot from 2026-10-13 17-56-22" src="https://github.com/user-attachments/assets/344a92e7-2414-4c27-a2fb-9e2edd988238" />
+</p>
+
+**Explicación del movimiento**
+<p>
+Entonces ya una vez que tenemos la línea detectada, podemos comenzar con el movimiento del coche
+
+Primero he encontrado el centro de la imagen haciendo uso de una función que pertenece a una de las variables para poder saber el ancho de la imagen y he calculado la mitad, luego tengo otra variable que ubica el centro de los pixeles y tras hacer una operación sacó la distancia que tiene el coche con el centro.
+
+Una vez que tenemos la distancia he puesto un rango de distancia que puede tener el coche con respecto la línea, siendo este rango 10, entonces en el momento en el que el coche supera esa distancia tiene que doblar a la izquierda o a la derecha dependiendo del caso, izquierda si el valor del rango es menor que -10, es negativo porque el eje central es la línea roja entonces los puntos que están en un lado y otro son los mismos pero con el signo cambiado, por lo que si el coche también si supera el rango de 10 tendría que hacer el movimiento opuesto.
+</p>
+
+**Explicación resumida del codigo**
+<p>
+Primero he creado una máquina de estados para en el caso en el que el coche no encuentre la línea de primeras gire, entonces el coche comienza con el estado VEO_LA_LINEA, pero si no ve nada de la linea se cambia al estado NO_VEO_LA_LINEA, este comienza a girar hasta que llega a un mínimo, para que se considere que el coche ve bien la línea, se cambia el estado y este continua con el camino.
+
+Para explicar el movimiento del coche, teniendo en cuenta lo anterior, he creado un if para cada uno de los casos, uno para el movimiento lineal otro para el giro izquierdo y otro para el giro derecho.
+
+Para obtener la velocidad de los distintos movimientos he creado una velocidad basándose en la P del PID, la ecuación es:
+
+Vf = K*dist + vel
+
+La k es una constante, dist es la distancia del coche respecto a la línea y luego a esto se le suma la velocidad 
+
+Para el movimiento lineal le añado un valor inicial de velocidad de 10, tiene una velocidad de giro de cero ya que sigue un movimiento lineal. Luego para los movimientos de giro, les he puesto como valor inicial para la velocidad de giro 0, para que gire lo justo y necesario que necesite según la constante y la distancia y a estos movimientos de giro le he añadido una velocidad de giro de 8, he optado porque sea menor que la anterior, por el peligro que a pueda salir de las curvas por tener demasiada velocidad lineal.
+</p>
+
+**Video de ejemplo del movimiento del coche**
+
+
+[Screencast from 2026-10-13 18-35-50.webm](https://github.com/user-attachments/assets/90b7021b-94f1-47c7-9a4c-370c81118992)
+
+Nota del video: En este mi video me pasa como en el anterior, que el video va con demasiado delay pero en verdad el simulador no se ve con tanto retardo.

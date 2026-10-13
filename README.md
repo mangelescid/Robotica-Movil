@@ -122,6 +122,13 @@ Para el movimiento lineal le añado un valor inicial de velocidad de 10, tiene u
 **Video de ejemplo del movimiento del coche**
 
 
-[Screencast from 2026-10-13 18-35-50.webm](https://github.com/user-attachments/assets/90b7021b-94f1-47c7-9a4c-370c81118992)
+[Screencast from 2026-10-13 22-01-35.webm](https://github.com/user-attachments/assets/8ac88063-ab51-4625-897c-402b3765542d)
 
-Nota del video: En este mi video me pasa como en el anterior, que el video va con demasiado delay pero en verdad el simulador no se ve con tanto retardo.
+
+Nota del video: En este mi video me pasa como en el anterior, que el video va con demasiado delay pero en verdad el simulador no se ve con tanto retardo, en el simulador la curva se ve que la hace con total fluidez.
+
+
+**Problemas que me he encontrado a la hora de hacer la practica**
+<p>
+Pues el principal problema que me he podido encontrar es a la hora de encontrar la K, ya que este es un valor constante el cual se obtiene a base de hacer muchas pruebas, entonces se tarda mucho en encontrar un valor que pueda ser idoneo para el movimiento.
+</p>

@@ -122,12 +122,36 @@ Para el movimiento lineal le añado un valor inicial de velocidad de 10, tiene u
 **Video de ejemplo del movimiento del coche**
 
 
+
 [Screencast from 2026-10-13 22-01-35.webm](https://github.com/user-attachments/assets/8ac88063-ab51-4625-897c-402b3765542d)
 
 
 
 
-Nota del video: En este mi video me pasa como en el anterior, que el video va con demasiado delay pero en verdad el simulador no se ve con tanto retardo, en el simulador la curva se ve que la hace con total fluidez.
+
+[Screencast from 2026-10-15 12-29-57.webm](https://github.com/user-attachments/assets/fd00dd31-f23a-4164-a93f-0e03fd25c604)
+
+
+
+
+**Nota del video**: En estos videos me pasa como en el anterior, que el video va con demasiado delay pero en verdad, en el simulador, no se ve de esta forma, el movimiento del coche es mucho más fluido en el simulador.
+
+
+
+**Ejemplo de como se vería en realidad**
+
+
+
+
+
+[20261015_123735_1.webm](https://github.com/user-attachments/assets/ee6440f1-ba38-40e2-bce9-373c0726f1bd)
+
+
+
+
+
+Este es un ejemplo de como se ve en simulador el movimiento en las curvas
+
 
 
 **Problemas que me he encontrado a la hora de hacer la practica**

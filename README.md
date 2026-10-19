@@ -158,3 +158,22 @@ Este es un ejemplo de como se ve en simulador el movimiento en las curvas
 <p>
 El principal problema que me he podido encontrar es a la hora de encontrar la K, ya que este es un valor constante el cual se obtiene a base de hacer muchas pruebas, entonces se tarda mucho en encontrar un valor que pueda ser idóneo para el movimiento.
 </p>
+
+
+## Práctica 3
+**Objetivo de la práctica**
+<p>
+El objetivo de este ejercicio es implementar la lógica del algoritmo de navegación VFF
+  
+Los objetos, que son los diferentes obstaculos, van a generar una fuerza repulsiva contra el robot y el destino, todo lo contrario, creara una fuerza de atracción que tirara del coche hasta este punto.
+
+Los distintos objetivos a tratar son:
+
+  - Que el coche vaya lo más rapido posible
+
+  - Que el coche escoja la ruta que es más segura
+
+  - Evitar los obstaculos que están en movimiento
+
+  - Y que tenga robustez en aquellos casos en los que el robot este indeciso de por donde poder tirar, es decir, en los casos en los que la suma de los vectores de 0  
+</p>

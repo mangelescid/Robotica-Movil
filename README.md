@@ -177,3 +177,30 @@ Los distintos objetivos a tratar son:
 
   - Y que tenga robustez en aquellos casos en los que el robot este indeciso de por donde poder tirar, es decir, en los casos en los que la suma de los vectores de 0  
 </p>
+
+**Explicación del movimiento**
+<p>
+El movimiento que tiene que hacer el coche es el siguiente, tiene que seguir un circuito de fórmula uno y se va a ir encontrando con una serie de obstáculos, que debe esquivar y aquí es cuando entran las fuerzas.
+
+Hay tres fuerzas que utilizamos, la atractiva, repulsiva y por último la resultante; la cual es una combinación de ambas fuerzas.
+
+FUERZA ATRACTIVA
+
+Esta fuerza, es generada a partir de los distintos checkpoints que genera el mapa local, los cuales son una serie de puntos que da el programa y por los cuales el robot debe de ir pasando y este punto atrae al robot para que se acerque a él generando una fuerza sobre este. 
+
+FUERZA REPULSIVA
+
+Esta fuerza es la que se genera a partir de los distintos obstáculos, básicamente lo que hace es que el coche los rechacen, para que de esta forma tome por un camino y haga un tipo de giro con una velocidad u otra... Los láseres del robot son los que se encargan de detectar estos obstáculos y conforme nos vamos acercando a ellos, la flecha se hace cada vez más grande, aquí también entran las paredes, no son igual de fuertes que cuando nuestro coche se encuentra con otro, pero se tienen en cuenta, en unos rangos del láser, concretamente en los láseres menores de 30 y mayores de 150 grados, sin tener a ellos encuenta.
+
+FUERZA RESULTANTE
+
+Es la fuerza que sigue el robot, la que marca la orientación del movimiento del robot y surge de la diferencia de las dos anteriores.
+
+Entonces el coche se irá moviendo a lo largo de la pista, con una velocidad de giro y lineal, que irán orquestando estas fuerzas.
+</p>
+
+<img width="537" height="316" alt="Screenshot from 2026-10-26 22-48-58" src="https://github.com/user-attachments/assets/6a0636ef-b740-4504-a53e-19b008ab4610" />
+
+En esta imagen podemos ver las distintas fuerzas, siendo la roja la fuerza repulsiva, la verde la atractiva y la negra la resultante.
+
+

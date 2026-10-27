@@ -1,7 +1,7 @@
 # Robotica-Movil
 
 
-## Práctica 1
+## Práctica 1: MOVIMIENTO DE UNA RUMBA POR UNA MÁQUINA DE ESTADOS
 **Objetivo de la práctica**
 <p>
 El objetivo de nuestra práctica es crear una máquina de estados para un robot roomba; crear un algoritmo de cobertura.
@@ -34,7 +34,7 @@ El único problema que le puedo ver es que sea a lo mejor el movimiento, demasia
 
 
 
-**Explicación resumida del codigo**
+**Explicación resumida del código**
 <p>
 Antes de empezar, pude solucionar lo del problema con los láseres, poniendo un if para comprobarlo con respecto al tamaño del array.
 
@@ -74,7 +74,7 @@ Otro problema que me he encontrado, que creo que ya es del servidor, es que el m
 </p>
 
 
-## Práctica 2
+## Práctica 2: MOVIMIENTO DE UN COCHE SIGUIENDO UNA LÍNEA
 
 **Objetivo de la práctica**
 <p>
@@ -104,7 +104,7 @@ Primero he encontrado el centro de la imagen haciendo uso de una función que pe
 Una vez que tenemos la distancia he puesto un rango de distancia que puede tener el coche con respecto la línea, siendo este rango 10, entonces en el momento en el que el coche supera esa distancia tiene que doblar a la izquierda o a la derecha dependiendo del caso, izquierda si el valor del rango es menor que -10, es negativo porque el eje central es la línea roja entonces los puntos que están en un lado y otro son los mismos pero con el signo cambiado, por lo que si el coche también si supera el rango de 10 tendría que hacer el movimiento opuesto.
 </p>
 
-**Explicación resumida del codigo**
+**Explicación resumida del código**
 <p>
 Primero he creado una máquina de estados para en el caso en el que el coche no encuentre la línea de primeras gire, entonces el coche comienza con el estado VEO_LA_LINEA, pero si no ve nada de la linea se cambia al estado NO_VEO_LA_LINEA, este comienza a girar hasta que llega a un mínimo, para que se considere que el coche ve bien la línea, se cambia el estado y este continua con el camino.
 
@@ -160,7 +160,7 @@ El principal problema que me he podido encontrar es a la hora de encontrar la K,
 </p>
 
 
-## Práctica 3
+## Práctica 3: MOVIMIENTO DE UN COCHE Y ESQUIVANDO OBSTÁCULOS MEDIANTE FUERZAS
 **Objetivo de la práctica**
 <p>
 El objetivo de este ejercicio es implementar la lógica del algoritmo de navegación VFF
@@ -202,5 +202,56 @@ Entonces el coche se irá moviendo a lo largo de la pista, con una velocidad de 
 <img width="537" height="316" alt="Screenshot from 2026-10-26 22-48-58" src="https://github.com/user-attachments/assets/6a0636ef-b740-4504-a53e-19b008ab4610" />
 
 En esta imagen podemos ver las distintas fuerzas, siendo la roja la fuerza repulsiva, la verde la atractiva y la negra la resultante.
+
+**Explicación resumida del código**
+<p>
+Primero con una función sacamos los targets, que vienen dados por el código, para indicar al robot por los distintos puntos que debe de ir pasando, cuando tenemos ese punto  y la distancia del coche a este, obtenemos un valor que nos ayudará a obtener la fuerza atractiva del robot.
+
+Mientras que este circula, los 180 láseres del coche van mirando los distintos obstáculos con los que se va encontrando por el camino y va midiendo la distancia que tiene con ellos, una vez que la distancia alcanza un umbral, lo tenemos en cuenta para poder calcular la fuerza repulsiva, también importa porque láser entra la información, ya que dependiendo de porque láser se ha medido, se considera que es una pared o bien que es un obstáculo que le viene de frente, los rangos que he puesto los he indicado en el apartado anterior, entonces según por donde entre se le da una repulsividad u otra.
+
+Ya tenemos la fuerza atractiva,  la repulsiva, tenemos entonces la resultante, la que nos marcará el movimiento del robot.
+
+Luego las velocidades se irán regulando con las fuerzas, por ejemplo la velocidad de giro, depende de la fuerza resultante, puesto que esta es la que nos indica la orientación y por lo tanto nos dice si el coche necesita girar o no y luego a esta se le multiplica un coeficiente para que el giro sea más natural y de esta forma no oscile o no sea un giro demasiado brusco, como esta constante hay muchas más, la velocidad lineal mientras tanto la sacamos de una operación, que es una resta, el coche tiene una velocidad predeterminada, en mi caso de 6, y a este valor lo que hacemos es restar la velocidad angular a la que le multiplicó otra constante para que haga lo mismo que con la de giro, este cálculo es para cuando gire, sea menor la velocidad lineal.
+
+Una vez que el coche se acerca al check point, no cuando llegue ya que entonces el coche frenaría, por lo tanto estaría todo el rato frena, arranca, frena, arranca… Y eso no es lo que queremos, queremos que sea un movimiento fluido, entonces creamos un radio por así decirlo y si alcanza ese radio, se daría como true de que el coche ha llegado al punto y evitamos que de esta forma que pare y que siga su camino de forma normal y a continuación se generaría el próximo punto.
+
+Y así sucesivamente hasta llegar al punto final dando por concluida la misión.
+</p>
+
+
+**Video de ejemplo del movimiento del coche**
+
+Ahora pondre algunos videos de como pasa el coche alguno de los obstaculos de la pista:
+
+
+[Screencast from 2026-10-27 18-01-10.webm](https://github.com/user-attachments/assets/d28ceb1c-e8fe-474a-8699-1db4707bc3a4)
+
+
+
+
+
+
+
+[Screencast from 2026-10-27 18-04-20.webm](https://github.com/user-attachments/assets/d6607495-04a0-4f0f-b561-a9becb2eada0)
+
+
+
+
+
+
+
+
+[Screencast from 2026-10-27 18-02-53.webm](https://github.com/user-attachments/assets/cb1621c5-c7a3-408c-aa8f-e01e219b3a7e)
+
+
+
+
+
+Nota acerca de los videos: Como en las anteriores, no se ve bien representando como es el movimiento orignal de mi coche en video ya que en el video va con demasiado delay
+
+**Problemas con los que me he encontrado**
+<p>
+Pues al igual que la anterior práctica, que encontrar los valores de las distintas constantes me ha costado muchísimo, ya que si tocaba un valor por la oscilación, ahora de repente se chocó y ahora a corregir para que no se choque y eso creo que ha sido lo que me ha podido retrasar más a la hora de hacer la práctica, luego también el encontrar una velocidad buena para el coche, creo que seria lo que me ha costado más.
+</p>
 
 

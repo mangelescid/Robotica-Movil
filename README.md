@@ -255,3 +255,58 @@ Pues al igual que la anterior práctica, que encontrar los valores de las distin
 </p>
 
 
+## Práctica 4: NAVEGACIÓN GLOBAL
+
+**Objetivos de esta prácica**
+<p>
+En esta práctica tendremos que crear un coche autónomo, este coche, solo conociendo cual es su origen y su destino, debe de calcular una trayectoria para ver cual es el mejor camino para llegar a su destino, para ello haremos uso de mapas globales, al contrario que en la práctica anterior.
+</p>
+
+**Explicación del algoritmo**
+<p>
+Mi programa se "divide" en tres bloques, en primer lugar tenemos el mapeado global, luego el calculo de la trayectoria y por ultimo el moviemiento del coche.
+</p>
+
+*Mapeado Global*
+<p>
+Nosotros disponemos de un primer mapa el cual es una matriz que está formada por números y cada número nos da un tipo de información, diciéndonos si es un obstáculo, siendo este el 255, o si es una calle, siendo este el 0.
+
+
+  
+  <img width="507" height="470" alt="Screenshot from 2026-11-15 14-31-00" src="https://github.com/user-attachments/assets/c6d8f4cb-4462-4d38-98af-019dafef5035" />
+
+Esta matriz nosotros se la tenemos que pasar a nuestro coche, pero lo primero que haremos será traducirla para luego calcular la trayectoria de este. 
+
+Entonces, lo primero que yo hago antes del mapeado que tendrá el coche es crear una zona de penalización, para evitar que el coche se acerque tanto a las paredes, lo que hago es recorrer la matriz, el bucle encuentra un obstáculo, me desplazo tanto en fila como en columna de -n, siendo n la cota de penalización hasta n posiciones, (-n ... n), y a esa casilla le asignó un peso muy grande, y está numpy de penalización luego se tendrá en cuenta a la hora de calcular el resto de pesos de las casillas.
+
+Una vez listo lo anterior, comenzamos con el mapeado, primero le decimos al coche el destino al que queremos que vaya y una vez lo tenemos creamos una onda expansiva alrededor de este la cual va ir asignando los distintos pesos a las casillas, la casilla del destino tiene valor cero y luego creamos ocho movimientos, siguiendo los puntos cardinales, y dependiendo de cuántas casillas se mueva irá aumentando, si son los 4 verticales sus pesos irán creciendo 1 unidad y los diagonales en 1.4, en el caso en el que nos topemos con una casilla que esté cerca de un obstáculo le sumamos un extra a ese peso, el de la penalización, y si es un obstáculo, no se tiene en cuenta. Hemos ido guardando estas posiciones de las casillas en una pila, FIFO, para ahora comprobarlas haciendo el círculo más grande y así sucesivamente hasta terminar el mapa.
+
+Ya hemos terminado el mapa, entonces le pasamos la matriz imagen al robot con todos los pesos.
+
+Si se cambia la posición durante el recorrido, no pasa nada, el coche sigue su movimiento mientras se recalcula el nuevo recorrido y una vez que este lo tiene listo toma este nuevo recorrido.
+</p>
+
+**Ejemplo de como se ve el mapeado con la onda de pesos**
+
+
+<img width="507" height="470" alt="Screenshot from 2026-11-15 15-03-38" src="https://github.com/user-attachments/assets/47b749a0-b143-48ea-b865-5604f06d67ae" />
+
+
+<img width="507" height="470" alt="Screenshot from 2026-11-15 15-10-21" src="https://github.com/user-attachments/assets/2bddcbb5-a43f-4780-a6c1-42afb3a9053d" />
+
+*Como se puede ver lo que se muestra con una mayor intensidad es el destino y con menos intensidad es lo que está muy lejano de este*
+
+<p>
+Ahora comienza el segundo bloque del algoritmo, el cálculo de la trayectoria, este no sigue una idea muy distinta al anterior, ahora lo que hacemos es el mismo bucle de movimiento alrededor de la posición del coche, el de los ocho movimientos, cogemos la casilla con menor peso, la guardamos y la tomamos como centro para el siguiente bucle, así sucesivamente hasta llegar a la ubicación del destino.
+
+La trayectoria la podemos ver también en las imágenes anteriores, la linea de color verde
+
+Y por último el movimiento del coche, que es casi igual que el de la práctica anterior cambiando algunas cosillas, vamos extrayendo las casillas del camino del coche y lo que hacemos es transformar los valores de la columna fila, a x e y, calculamos la distancia que hay de este punto a la posición del coche y con esa distancia resultante sacamos un ajuste como en la práctica anterior para ver si el coche debería de girar en un sentido o en otro y con la fórmula de la velocidad de la otra práctica tenemos la velocidad lineal y la de rotación simplemente con la resultante. 
+
+También he incorporado un radio de distancia en el coche, para que se modifique el destino antes de que llegase a el destino ya que sino no tendría un movimiento natural  y luego he tenido en cuenta la distancia que tiene el coche con el destino final, para cuando el coche tenga la misma posición o la supere, este frene.
+</p>
+
+**Problemas que he tenido en esta practica**
+<p>
+Los principales problemas que he tenido en esta práctica aparte de calcular el peso, es que el algoritmo tarda mucho en cargar, es decir, como mi código está formado por demasiados bucles hace que sea lento y que por lo tanto si por ejemplo decidiese cambiar de destino durante la ejecución, este tarda mucho en cargar la nueva.
+</p>

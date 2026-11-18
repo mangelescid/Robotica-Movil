@@ -272,6 +272,8 @@ Mi programa se "divide" en tres bloques, en primer lugar tenemos el mapeado glob
 Nosotros disponemos de un primer mapa el cual es una matriz que está formada por números y cada número nos da un tipo de información, diciéndonos si es un obstáculo, siendo este el 255, o si es una calle, siendo este el 0.
 
 
+
+
   
   <img width="507" height="470" alt="Screenshot from 2026-11-15 14-31-00" src="https://github.com/user-attachments/assets/c6d8f4cb-4462-4d38-98af-019dafef5035" />
 
@@ -305,6 +307,17 @@ Y por último el movimiento del coche, que es casi igual que el de la práctica 
 
 También he incorporado un radio de distancia en el coche, para que se modifique el destino antes de que llegase a el destino ya que sino no tendría un movimiento natural  y luego he tenido en cuenta la distancia que tiene el coche con el destino final, para cuando el coche tenga la misma posición o la supere, este frene.
 </p>
+
+**Video de distintos casos**
+
+
+
+
+
+[Screencast from 2026-11-18 23-07-01.webm](https://github.com/user-attachments/assets/e285cb5a-9e9d-4f99-9845-41d83b470c70)
+
+
+
 
 **Problemas que he tenido en esta practica**
 <p>

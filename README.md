@@ -323,3 +323,22 @@ También he incorporado un radio de distancia en el coche, para que se modifique
 <p>
 Los principales problemas que he tenido en esta práctica aparte de calcular el peso, es que el algoritmo tarda mucho en cargar, es decir, como mi código está formado por demasiados bucles hace que sea lento y que por lo tanto si por ejemplo decidiese cambiar de destino durante la ejecución, este tarda mucho en cargar la nueva.
 </p>
+
+
+
+
+
+## Práctica 5: MAPEO LASER
+**Objetivo de la práctica**
+<p>
+Desarrollar un algoritmo de navegación que permita a un robot explorar de forma autónoma un entorno de almacén mientras genera un mapa con un sensor laser LIDAR.
+
+Este debe ser capaz de:
+  - Perciba los obstáculos y el espacio libre mediante mediciones láser
+
+  - Construir y actualizar un mapa del entorno mientras se mueve
+
+  - Navegar de forma segura sin conocimiento previo del medio ambiente
+
+  - Continúe la exploración hasta que el área alcanzable esté suficientemente cubierta
+</p>
